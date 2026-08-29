@@ -1,427 +1,539 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amutha | Full Stack + Integration Developer</title>
-<style>
-  :root{
-    --bg: #0d1220;
-    --bg-alt: #10172a;
-    --card: #1a2236;
-    --card-border: #26314a;
-    --text: #e6e9f2;
-    --text-dim: #9aa4bd;
-    --blue: #4f6ef7;
-    --purple: #a855f7;
-    --grad: linear-gradient(90deg, var(--blue), var(--purple));
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070a13">
+  <meta name="description" content="Portfolio of Amutha Karuvelamuthu — Full Stack and Enterprise Integration Developer with hands-on IBM Sterling OMS and IBM Sterling B2B Integrator experience.">
+  <meta name="author" content="Amutha Karuvelamuthu">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Amutha Karuvelamuthu | Full Stack & Enterprise Integration Developer">
+  <meta property="og:description" content="Building modern web experiences and reliable IBM Sterling enterprise integrations.">
+  <meta property="og:url" content="https://amutha-karuvelamuthu.github.io/Digital-Portfolio/">
+  <meta property="og:image" content="https://amutha-karuvelamuthu.github.io/Digital-Portfolio/assets/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Amutha Karuvelamuthu portfolio — connecting digital experiences to enterprise order flows">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://amutha-karuvelamuthu.github.io/Digital-Portfolio/assets/og-preview.png">
+  <title>Amutha Karuvelamuthu | Full Stack & Enterprise Integration Developer</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      const savedTheme = localStorage.getItem('amutha-portfolio-theme');
+      const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : preferredTheme;
+    } catch (_) { /* The default dark theme remains available when storage is blocked. */ }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Amutha Karuvelamuthu",
+    "url": "https://amutha-karuvelamuthu.github.io/Digital-Portfolio/",
+    "sameAs": ["https://github.com/Amutha-Karuvelamuthu"],
+    "jobTitle": "Full Stack and Enterprise Integration Developer",
+    "knowsAbout": [
+      "IBM Sterling Order Management System",
+      "IBM Sterling B2B Integrator",
+      "Angular",
+      "TypeScript",
+      "Enterprise Integration",
+      "EDI",
+      "BPML"
+    ]
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    line-height:1.6;
-  }
-  a{color:inherit;text-decoration:none;}
-  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
-  .grad-text{
-    background:var(--grad);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
-  section{padding:90px 0;}
-  h2{font-size:2.4rem;text-align:center;margin-bottom:14px;font-weight:800;}
-  .section-sub{text-align:center;color:var(--text-dim);max-width:640px;margin:0 auto 50px;}
-
-  /* NAV */
-  nav{
-    position:sticky;top:0;z-index:100;
-    background:rgba(13,18,32,0.85);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--card-border);
-  }
-  nav .container{display:flex;justify-content:space-between;align-items:center;height:64px;}
-  .nav-logo{font-weight:800;letter-spacing:1px;}
-  .nav-links{display:flex;gap:28px;font-size:0.92rem;color:var(--text-dim);}
-  .nav-links a:hover{color:var(--text);}
-
-  /* HERO */
-  .hero{
-    min-height:88vh;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;
-    padding:60px 24px;
-  }
-  .eyebrow{
-    letter-spacing:3px;font-size:0.85rem;color:var(--text-dim);
-    text-transform:uppercase;margin-bottom:18px;
-  }
-  .hero h1{font-size:4.2rem;font-weight:900;margin-bottom:26px;letter-spacing:1px;}
-  .hero p{color:var(--text-dim);max-width:560px;margin:0 auto 34px;font-size:1.05rem;}
-  .btn-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-  .btn{
-    padding:13px 28px;border-radius:8px;font-weight:600;font-size:0.95rem;
-    cursor:pointer;transition:transform .15s ease, opacity .15s ease;
-  }
-  .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--grad);color:#fff;border:none;}
-  .btn-outline{background:transparent;border:1px solid var(--blue);color:var(--text);}
-  .scroll-hint{margin-top:70px;color:var(--blue);font-size:1.3rem;animation:bounce 2s infinite;}
-  @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
-
-  /* ABOUT */
-  .about-text{text-align:center;max-width:720px;margin:0 auto 60px;color:var(--text-dim);}
-  .about-text b{color:var(--text);}
-  .about-text .name{color:var(--purple);font-weight:700;}
-
-  h3.block-title{font-size:1.9rem;text-align:center;margin:70px 0 12px;font-weight:800;}
-
-  .grid{display:grid;gap:20px;}
-  .skills-grid{grid-template-columns:repeat(5,1fr);}
-  .skill-card{
-    background:var(--card);border:1px solid var(--card-border);border-radius:12px;
-    padding:22px 18px;text-align:center;
-  }
-  .skill-card h4{font-size:0.95rem;margin-bottom:12px;}
-  .bar{height:6px;background:#2a3350;border-radius:6px;overflow:hidden;margin-bottom:8px;}
-  .bar-fill{height:100%;background:var(--grad);}
-  .skill-card span{font-size:0.8rem;color:var(--text-dim);}
-
-  /* INTEGRATION SPOTLIGHT */
-  .spotlight{
-    background:var(--bg-alt);
-    border-top:1px solid var(--card-border);
-    border-bottom:1px solid var(--card-border);
-  }
-  .badge{
-    display:inline-block;background:rgba(168,85,247,0.12);color:var(--purple);
-    border:1px solid rgba(168,85,247,0.35);
-    padding:5px 14px;border-radius:999px;font-size:0.78rem;font-weight:700;
-    letter-spacing:0.5px;margin-bottom:16px;
-  }
-  .spotlight-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
-  .spot-card{
-    background:var(--card);border:1px solid var(--card-border);border-radius:14px;
-    padding:28px;
-  }
-  .spot-card h4{font-size:1.15rem;margin-bottom:10px;color:var(--text);}
-  .spot-card h4 .tag{color:var(--blue);}
-  .spot-card p{color:var(--text-dim);font-size:0.93rem;}
-  .spot-list{list-style:none;margin-top:14px;}
-  .spot-list li{
-    color:var(--text-dim);font-size:0.9rem;padding-left:20px;position:relative;margin-bottom:8px;
-  }
-  .spot-list li::before{
-    content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;
-    background:var(--grad);
-  }
-
-  /* WORK */
-  .work-grid{grid-template-columns:repeat(3,1fr);}
-  @media(min-width:901px){.work-grid{grid-template-columns:repeat(3,1fr);}}
-  .work-card{
-    background:var(--card);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;
-  }
-  .work-thumb{height:170px;background:var(--grad);opacity:0.85;}
-  .work-thumb-wrap{position:relative;height:170px;overflow:hidden;}
-  .work-thumb-img{
-    width:100%;height:100%;object-fit:cover;object-position:top;
-    display:block;transition:transform .3s ease;
-  }
-  .work-card:hover .work-thumb-img{transform:scale(1.06);}
-  .work-overlay{
-    position:absolute;inset:0;background:rgba(13,18,32,0.75);
-    display:flex;align-items:center;justify-content:center;
-    opacity:0;transition:opacity .25s ease;
-  }
-  .work-card:hover .work-overlay{opacity:1;}
-  .open-project-btn{
-    background:var(--grad);color:#fff;font-weight:700;font-size:0.88rem;
-    padding:10px 20px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;
-  }
-  .work-body{padding:20px;}
-  .work-body h4{margin-bottom:8px;font-size:1.05rem;}
-  .work-body p{color:var(--text-dim);font-size:0.88rem;margin-bottom:14px;}
-  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
-  .tag{
-    background:rgba(168,85,247,0.15);color:#c9a3f7;font-size:0.75rem;
-    padding:4px 10px;border-radius:999px;
-  }
-
-  /* RESUME */
-  .resume-box{
-    background:var(--card);border:1px solid var(--card-border);border-radius:16px;
-    max-width:700px;margin:0 auto;text-align:center;padding:44px 30px;
-  }
-  .resume-icon{
-    width:56px;height:56px;border-radius:12px;background:var(--grad);
-    display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.4rem;
-  }
-  .resume-box p{color:var(--text-dim);margin-bottom:26px;max-width:480px;margin-left:auto;margin-right:auto;}
-
-  /* CONTACT */
-  .contact-form{max-width:600px;margin:0 auto;}
-  label{display:block;font-size:0.88rem;margin-bottom:6px;color:var(--text-dim);}
-  input, textarea{
-    width:100%;background:var(--card);border:1px solid var(--card-border);border-radius:8px;
-    padding:12px 14px;color:var(--text);margin-bottom:22px;font-family:inherit;font-size:0.95rem;
-  }
-  textarea{resize:vertical;min-height:110px;}
-  .send-btn{width:100%;border:none;padding:14px;border-radius:8px;background:var(--grad);
-    color:#fff;font-weight:700;font-size:0.95rem;cursor:pointer;}
-
-  /* FOOTER */
-  footer{
-    border-top:1px solid var(--card-border);padding:50px 0 26px;
-  }
-  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:30px;}
-  .foot-title{font-weight:800;font-size:1.15rem;}
-  .foot-title span{color:var(--text);}
-  footer h5{margin-bottom:14px;font-size:1rem;}
-  footer ul{list-style:none;}
-  footer li{margin-bottom:10px;}
-  footer li a{color:var(--text-dim);font-size:0.9rem;}
-  footer li a:hover{color:var(--text);}
-  .contact-line{display:flex;align-items:center;gap:8px;color:var(--text-dim);font-size:0.9rem;margin-bottom:12px;}
-  .socials{display:flex;gap:12px;margin-top:14px;}
-  .social-icon{
-    width:36px;height:36px;border-radius:50%;background:var(--grad);
-    display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:#fff;
-  }
-  .foot-bottom{border-top:1px solid var(--card-border);padding-top:20px;text-align:center;
-    color:var(--text-dim);font-size:0.82rem;}
-
-  @media(max-width:900px){
-    .hero h1{font-size:2.6rem;}
-    .skills-grid{grid-template-columns:repeat(2,1fr);}
-    .spotlight-grid{grid-template-columns:1fr;}
-    .work-grid{grid-template-columns:1fr;}
-    .foot-grid{grid-template-columns:1fr;}
-    .nav-links{display:none;}
-  }
-</style>
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
 
-<nav>
-  <div class="container">
-    <div class="nav-logo grad-text">AMUTHA</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#integration">Integration</a>
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="Amutha — home">
+        <span class="brand-mark" aria-hidden="true">AK</span>
+        <span class="brand-copy">
+          <strong>Amutha</strong>
+          <small>Integration Developer</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#expertise">Expertise</a>
+        <a href="#architecture">Integration</a>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch to light theme" title="Change colour theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.5A8.6 8.6 0 0 1 8.5 3.6 8.7 8.7 0 1 0 20.4 15.5Z"></path></svg>
+        </button>
+        <button class="nav-assistant-button" type="button" data-open-assistant>
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Ask my portfolio
+        </button>
+        <button class="mobile-menu-button icon-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+      <a href="#expertise">Expertise</a>
+      <a href="#architecture">Integration</a>
       <a href="#work">Work</a>
-      <a href="#resume">Resume</a>
+      <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
+      <button type="button" data-open-assistant>Ask my portfolio</button>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="eyebrow">FULL STACK + INTEGRATION DEVELOPER</div>
-  <h1 class="grad-text">AMUTHA</h1>
-  <p>I build interactive front-end applications and enterprise integration solutions — connecting user-facing experiences with the systems that power B2B commerce and order management behind the scenes.</p>
-  <div class="btn-row">
-    <a href="#work" class="btn btn-primary">View My Work</a>
-    <a href="#about" class="btn btn-outline">About Me</a>
-  </div>
-  <div class="scroll-hint">&#8595;</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <h2 class="grad-text">About Me</h2>
-    <p class="about-text">
-      I'm <span class="name">Amutha</span>, a creative and detail-oriented developer who loves turning ideas into interactive, user-friendly applications — and, more recently, building the enterprise integration backbone that connects them. I specialize in front-end development with Angular and Firebase, and I've since gained hands-on experience with <b>IBM Sterling B2B Integrator</b> and <b>IBM Sterling Order Management System (OMS)</b>. My goal is to deliver clean, performant code and reliable, scalable systems from the UI all the way through the back-end.
-    </p>
-
-    <h3 class="block-title grad-text">Tech Toolbox</h3>
-    <p class="section-sub">A diverse set of technologies spanning front-end development and enterprise integration.</p>
-    <div class="grid skills-grid">
-      <div class="skill-card"><h4>Angular</h4><div class="bar"><div class="bar-fill" style="width:90%"></div></div><span>90%</span></div>
-      <div class="skill-card"><h4>TypeScript</h4><div class="bar"><div class="bar-fill" style="width:85%"></div></div><span>85%</span></div>
-      <div class="skill-card"><h4>JavaScript</h4><div class="bar"><div class="bar-fill" style="width:80%"></div></div><span>80%</span></div>
-      <div class="skill-card"><h4>HTML5</h4><div class="bar"><div class="bar-fill" style="width:95%"></div></div><span>95%</span></div>
-      <div class="skill-card"><h4>CSS3/SCSS</h4><div class="bar"><div class="bar-fill" style="width:90%"></div></div><span>90%</span></div>
-      <div class="skill-card"><h4>Tailwind CSS</h4><div class="bar"><div class="bar-fill" style="width:85%"></div></div><span>85%</span></div>
-      <div class="skill-card"><h4>RxJS</h4><div class="bar"><div class="bar-fill" style="width:75%"></div></div><span>75%</span></div>
-      <div class="skill-card"><h4>Node.js</h4><div class="bar"><div class="bar-fill" style="width:70%"></div></div><span>70%</span></div>
-      <div class="skill-card"><h4>Sterling B2B Integrator</h4><div class="bar"><div class="bar-fill" style="width:75%"></div></div><span>75%</span></div>
-      <div class="skill-card"><h4>Sterling OMS</h4><div class="bar"><div class="bar-fill" style="width:70%"></div></div><span>70%</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- INTEGRATION SPOTLIGHT -->
-<section id="integration" class="spotlight">
-  <div class="container">
-    <div style="text-align:center;">
-      <span class="badge">NEW SKILL SET</span>
-    </div>
-    <h2 class="grad-text">Integration Expertise</h2>
-    <p class="section-sub">Hands-on experience with IBM Sterling B2B Integrator and Sterling Order Management, connecting trading partners and orchestrating order flows.</p>
-
-    <div class="spotlight-grid">
-      <div class="spot-card">
-        <h4><span class="tag">IBM</span> Sterling B2B Integrator</h4>
-        <p>Enterprise B2B integration platform for exchanging documents and data with trading partners.</p>
-        <ul class="spot-list">
-          <li>EDI mapping and document translation (X12 / EDIFACT)</li>
-          <li>Trading partner onboarding and configuration</li>
-          <li>Business process modeling (BPML) and workflow automation</li>
-          <li>Monitoring, error handling, and troubleshooting integration flows</li>
-        </ul>
+  <main id="main-content">
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <div class="availability-pill">
+          <span class="status-light" aria-hidden="true"></span>
+          Full Stack · IBM Sterling · Enterprise Integration
+        </div>
+        <p class="hero-kicker">Hello, I’m Amutha Karuvelamuthu</p>
+        <h1 id="hero-title">I connect <span>digital experiences</span> to enterprise order flows.</h1>
+        <p class="hero-summary">A Full Stack and Enterprise Integration Developer with hands-on experience installing, configuring, and integrating <strong>IBM Sterling OMS</strong> and <strong>IBM Sterling B2B Integrator</strong>—alongside modern, user-focused web applications.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#expertise">
+            Explore my expertise
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+          <button class="button button-secondary" type="button" data-open-assistant>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 0 0-4 12.74V20l4-2 4 2v-4.26A7 7 0 0 0 12 3Z"></path><path d="M9 10h.01M15 10h.01M9.5 13.5c1.7 1.1 3.3 1.1 5 0"></path></svg>
+            Ask portfolio assistant
+          </button>
+        </div>
+        <div class="hero-proof" aria-label="Core capability summary">
+          <div><strong>Install</strong><span>Enterprise platforms</span></div>
+          <div><strong>Configure</strong><span>Order & B2B flows</span></div>
+          <div><strong>Integrate</strong><span>Connected systems</span></div>
+        </div>
       </div>
-      <div class="spot-card">
-        <h4><span class="tag">IBM</span> Sterling OMS</h4>
-        <p>Order management platform for orchestrating omnichannel order lifecycles.</p>
-        <ul class="spot-list">
-          <li>Order orchestration and lifecycle configuration</li>
-          <li>Fulfillment and inventory rule setup</li>
-          <li>Integration between OMS, B2Bi, and downstream systems</li>
-          <li>Support and issue resolution across order flows</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- WORK -->
-<section id="work">
-  <div class="container">
-    <h2 class="grad-text">Work Showcase</h2>
-    <p class="section-sub">Here are some of my recent works — from front-end applications to enterprise integration flows.</p>
-    <div class="grid work-grid">
-      <div class="work-card">
-        <a class="work-thumb-wrap" href="https://freshcart-ac57c.web.app/index" target="_blank" rel="noopener">
-          <img class="work-thumb-img" src="assets/freshcart.png" alt="Freshcart e-commerce site screenshot">
-          <div class="work-overlay">
-            <span class="open-project-btn">&#8599; Open Project</span>
+      <div class="hero-visual reveal" aria-label="Diagram showing applications connected to IBM Sterling OMS and B2B Integrator">
+        <div class="visual-glow" aria-hidden="true"></div>
+        <div class="system-window">
+          <div class="system-window-bar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span>enterprise-flow.map</span>
+            <span class="live-label"><i></i> Connected</span>
           </div>
-        </a>
-        <div class="work-body">
-          <h4>Freshcart</h4>
-          <p>My first e-commerce website — a grocery shopping platform with product catalog, secure checkout, and fast delivery tracking. Built and hosted on Firebase.</p>
-          <div class="tag-row">
-            <span class="tag">Angular</span><span class="tag">Bootstrap</span><span class="tag">JavaScript</span><span class="tag">Firebase</span>
+          <div class="system-map">
+            <svg class="map-lines" viewBox="0 0 520 430" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="flow-gradient" x1="0" x2="1">
+                  <stop offset="0" stop-color="#5eead4"></stop>
+                  <stop offset=".52" stop-color="#6aa7ff"></stop>
+                  <stop offset="1" stop-color="#a78bfa"></stop>
+                </linearGradient>
+                <filter id="soft-glow"><feGaussianBlur stdDeviation="2.2" result="blur"></feGaussianBlur><feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+              </defs>
+              <path class="flow-line flow-one" d="M112 103 C190 103 174 194 260 194"></path>
+              <path class="flow-line flow-two" d="M260 194 C349 194 330 103 408 103"></path>
+              <path class="flow-line flow-three" d="M260 194 C260 252 260 260 260 318"></path>
+              <path class="flow-line flow-four" d="M260 318 C329 318 343 337 408 337"></path>
+              <circle class="flow-packet packet-one" r="4" filter="url(#soft-glow)"><animateMotion dur="3.2s" repeatCount="indefinite" path="M112 103 C190 103 174 194 260 194"></animateMotion></circle>
+              <circle class="flow-packet packet-two" r="4" filter="url(#soft-glow)"><animateMotion dur="3.6s" repeatCount="indefinite" path="M260 194 C349 194 330 103 408 103"></animateMotion></circle>
+              <circle class="flow-packet packet-three" r="4" filter="url(#soft-glow)"><animateMotion dur="2.8s" repeatCount="indefinite" path="M260 194 C260 252 260 260 260 318"></animateMotion></circle>
+              <circle class="flow-packet packet-four" r="4" filter="url(#soft-glow)"><animateMotion dur="3.4s" repeatCount="indefinite" path="M260 318 C329 318 343 337 408 337"></animateMotion></circle>
+            </svg>
+
+            <div class="map-node node-channel">
+              <span class="node-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M8 21h8M12 18v3"></path></svg>
+              </span>
+              <small>Experience</small>
+              <strong>Web Apps</strong>
+            </div>
+            <div class="map-node node-oms featured-node">
+              <span class="node-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5Z"></path><path d="m4 7.5 8 4.5 8-4.5M12 12v9"></path></svg>
+              </span>
+              <small>Orchestration</small>
+              <strong>Sterling OMS</strong>
+            </div>
+            <div class="map-node node-systems">
+              <span class="node-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path></svg>
+              </span>
+              <small>Connected</small>
+              <strong>Enterprise Systems</strong>
+            </div>
+            <div class="map-node node-b2bi featured-node">
+              <span class="node-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="m8.6 10.5 6.8-3M8.6 13.5l6.8 3"></path></svg>
+              </span>
+              <small>Exchange</small>
+              <strong>Sterling B2Bi</strong>
+            </div>
+            <div class="map-node node-partners">
+              <span class="node-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </span>
+              <small>B2B Network</small>
+              <strong>Trading Partners</strong>
+            </div>
+          </div>
+          <div class="system-console" aria-hidden="true">
+            <span>&gt; flow_status</span>
+            <strong>healthy</strong>
+            <span class="console-cursor"></span>
           </div>
         </div>
       </div>
-      <div class="work-card">
-        <a class="work-thumb-wrap" href="https://project1-80a1c.web.app/landing" target="_blank" rel="noopener">
-          <img class="work-thumb-img" src="assets/chatly.png" alt="Chatly chat app screenshot">
-          <div class="work-overlay">
-            <span class="open-project-btn">&#8599; Open Project</span>
-          </div>
-        </a>
-        <div class="work-body">
-          <h4>Chatly</h4>
-          <p>A real-time chat application to keep friends, family, and colleagues connected. Built with Ionic and Firebase Realtime Database.</p>
-          <div class="tag-row">
-            <span class="tag">Ionic</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Firebase Realtime DB</span>
-          </div>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-thumb"></div>
-        <div class="work-body">
-          <h4>E-commerce Platform</h4>
-          <p>A full-featured online store with cart functionality and payment processing.</p>
-          <div class="tag-row">
-            <span class="tag">Angular</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Tailwind</span>
-          </div>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-thumb"></div>
-        <div class="work-body">
-          <h4>Task Management App</h4>
-          <p>A productivity application for organizing tasks with drag-and-drop functionality.</p>
-          <div class="tag-row">
-            <span class="tag">React</span><span class="tag">Firebase</span><span class="tag">Material UI</span>
-          </div>
-        </div>
-      </div>
-      <div class="work-card">
-        <div class="work-thumb"></div>
-        <div class="work-body">
-          <h4>Portfolio Website</h4>
-          <p>A responsive portfolio website with smooth animations and dark mode.</p>
-          <div class="tag-row">
-            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
-          </div>
-        </div>
+    </section>
+
+    <div class="technology-rail" role="region" tabindex="0" aria-label="Core technologies; scroll horizontally to view all">
+      <div class="rail-track">
+        <span>IBM Sterling OMS</span><i></i>
+        <span>IBM Sterling B2B Integrator</span><i></i>
+        <span>Angular</span><i></i>
+        <span>TypeScript</span><i></i>
+        <span>EDI · X12 · EDIFACT</span><i></i>
+        <span>Firebase</span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- RESUME -->
-<section id="resume">
-  <div class="container">
-    <h2 class="grad-text">Resume</h2>
-    <p class="section-sub">Interested in my work experience and skills? Download my resume below.</p>
-    <div class="resume-box">
-      <div class="resume-icon">&#8681;</div>
-      <p>I build performant, accessible web apps and reliable enterprise integrations, with a keen eye for detail. See the full breakdown of roles, responsibilities, and achievements in my resume.</p>
-      <div class="btn-row">
-        <a href="#" class="btn btn-primary">&#8681; Download Resume</a>
-        <a href="#" class="btn btn-outline">View Online</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <section class="content-section" id="expertise" aria-labelledby="expertise-title">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label"><span>01</span> Core expertise</p>
+            <h2 id="expertise-title">From platform setup to reliable business flow.</h2>
+          </div>
+          <p>I bring together front-end craft and enterprise integration thinking—so the experience users see is supported by systems that are configured to work reliably behind the scenes.</p>
+        </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <h2 class="grad-text">Let's Connect</h2>
-    <p class="section-sub">Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
-    <form class="contact-form" onsubmit="return false;">
-      <label for="name">Your Name</label>
-      <input id="name" type="text">
-      <label for="email">Email Address</label>
-      <input id="email" type="email">
-      <label for="message">Your Message</label>
-      <textarea id="message"></textarea>
-      <button class="send-btn" type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
+        <div class="expertise-grid">
+          <article class="expertise-card oms-card reveal">
+            <div class="card-topline">
+              <span class="card-number">01</span>
+              <span class="card-status"><i></i> Enterprise platform</span>
+            </div>
+            <div class="product-mark">
+              <span>IBM</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5Z"></path><path d="m4 7.5 8 4.5 8-4.5M12 12v9"></path></svg>
+            </div>
+            <h3>Sterling Order Management System</h3>
+            <p>Hands-on work with the platform that orchestrates order lifecycles across channels and connected enterprise systems.</p>
+            <ul class="capability-list">
+              <li><span></span>Installation and enterprise environment configuration</li>
+              <li><span></span>Order orchestration and lifecycle configuration</li>
+              <li><span></span>Fulfilment and inventory rule setup</li>
+              <li><span></span>OMS, B2Bi, and downstream product integration</li>
+              <li><span></span>Order-flow support and issue resolution</li>
+            </ul>
+            <button class="text-link assistant-topic" type="button" data-question="What can Amutha do with IBM Sterling OMS?">Ask about OMS <span>↗</span></button>
+          </article>
 
-<footer>
-  <div class="container">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-title">Crafted by <span>Amutha</span></div>
-        <p style="color:var(--text-dim);font-size:0.9rem;margin-top:8px;">Creating amazing digital experiences</p>
-        <div class="socials">
-          <a class="social-icon" href="#" aria-label="LinkedIn">in</a>
-          <a class="social-icon" href="#" aria-label="GitHub">gh</a>
+          <article class="expertise-card b2bi-card reveal">
+            <div class="card-topline">
+              <span class="card-number">02</span>
+              <span class="card-status"><i></i> B2B integration</span>
+            </div>
+            <div class="product-mark">
+              <span>IBM</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="m8.6 10.5 6.8-3M8.6 13.5l6.8 3"></path></svg>
+            </div>
+            <h3>Sterling B2B Integrator</h3>
+            <p>Hands-on platform setup and B2B flow configuration for dependable document exchange with trading partners.</p>
+            <ul class="capability-list">
+              <li><span></span>Installation and enterprise configuration</li>
+              <li><span></span>EDI mapping and translation using X12 / EDIFACT</li>
+              <li><span></span>Trading-partner onboarding and configuration</li>
+              <li><span></span>BPML business processes and workflow automation</li>
+              <li><span></span>Monitoring, error handling, and troubleshooting</li>
+            </ul>
+            <button class="text-link assistant-topic" type="button" data-question="Tell me about Amutha's IBM Sterling B2B Integrator skills.">Ask about B2Bi <span>↗</span></button>
+          </article>
+
+          <article class="expertise-card web-card reveal">
+            <div class="card-topline">
+              <span class="card-number">03</span>
+              <span class="card-status"><i></i> Digital experience</span>
+            </div>
+            <div class="product-mark">
+              <span>WEB</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"></path></svg>
+            </div>
+            <h3>Full Stack Development</h3>
+            <p>Interactive, responsive applications built with modern web technologies and a strong focus on clear user experiences.</p>
+            <ul class="capability-list">
+              <li><span></span>Angular, TypeScript, JavaScript, and RxJS</li>
+              <li><span></span>Responsive interfaces with HTML, CSS / SCSS</li>
+              <li><span></span>Firebase and Realtime Database applications</li>
+              <li><span></span>Ionic-based cross-platform experiences</li>
+              <li><span></span>Maintainable, component-oriented implementation</li>
+            </ul>
+            <button class="text-link assistant-topic" type="button" data-question="What frontend skills and projects does Amutha have?">Ask about web work <span>↗</span></button>
+          </article>
         </div>
       </div>
-      <div>
-        <h5>Quick Links</h5>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#work">Projects</a></li>
-          <li><a href="#contact">Contact me</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Contact Information</h5>
-        <div class="contact-line">&#128222; +91 8220440132</div>
-        <div class="contact-line">&#9993; amuthak0409@gmail.com</div>
-        <div class="contact-line">&#128205; Tirunelveli, Tamilnadu</div>
-      </div>
-    </div>
-    <div class="foot-bottom">&copy; 2026 Amutha. All rights reserved.</div>
-  </div>
-</footer>
+    </section>
 
+    <section class="content-section architecture-section" id="architecture" aria-labelledby="architecture-title">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label"><span>02</span> Integration thinking</p>
+            <h2 id="architecture-title">Connecting the complete order journey.</h2>
+          </div>
+          <p>My focus goes beyond an individual product. I work across the path from a customer-facing application to order orchestration, B2B exchange, and the systems or partners that complete the process.</p>
+        </div>
+
+        <div class="architecture-board reveal">
+          <div class="board-header">
+            <div>
+              <span class="board-eyebrow">REFERENCE FLOW</span>
+              <h3>Digital commerce → enterprise fulfilment</h3>
+            </div>
+            <div class="board-legend"><span><i class="legend-live"></i> System</span><span><i class="legend-flow"></i> Data flow</span></div>
+          </div>
+
+          <ol class="flow-steps">
+            <li class="flow-step">
+              <span class="step-index">01</span>
+              <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M8 21h8M12 18v3"></path></svg></div>
+              <small>Digital channel</small>
+              <strong>Web experience</strong>
+              <p>Customer interactions and commerce experiences.</p>
+            </li>
+            <li class="flow-connector" aria-hidden="true"><span></span><i></i></li>
+            <li class="flow-step highlight-step">
+              <span class="step-index">02</span>
+              <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5Z"></path><path d="m4 7.5 8 4.5 8-4.5M12 12v9"></path></svg></div>
+              <small>Orchestration</small>
+              <strong>Sterling OMS</strong>
+              <p>Order lifecycle, fulfilment, and inventory rules.</p>
+            </li>
+            <li class="flow-connector" aria-hidden="true"><span></span><i></i></li>
+            <li class="flow-step highlight-step">
+              <span class="step-index">03</span>
+              <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="m8.6 10.5 6.8-3M8.6 13.5l6.8 3"></path></svg></div>
+              <small>Exchange</small>
+              <strong>Sterling B2Bi</strong>
+              <p>Business processes, translation, and partner exchange.</p>
+            </li>
+            <li class="flow-connector" aria-hidden="true"><span></span><i></i></li>
+            <li class="flow-step">
+              <span class="step-index">04</span>
+              <div class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-4 7 4v12M9 21v-6h6v6M8 11h.01M12 11h.01M16 11h.01"></path></svg></div>
+              <small>Connected network</small>
+              <strong>Systems & partners</strong>
+              <p>Downstream products and external trading partners.</p>
+            </li>
+          </ol>
+
+          <div class="delivery-strip">
+            <article><span>01</span><div><strong>Install</strong><p>Prepare and deploy Sterling products for enterprise use.</p></div></article>
+            <article><span>02</span><div><strong>Configure</strong><p>Shape platform behaviour around business workflows.</p></div></article>
+            <article><span>03</span><div><strong>Integrate</strong><p>Connect OMS, B2Bi, downstream products, and partners.</p></div></article>
+            <article><span>04</span><div><strong>Support</strong><p>Monitor flows, diagnose issues, and restore reliability.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section work-section" id="work" aria-labelledby="work-title">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label"><span>03</span> Selected work</p>
+            <h2 id="work-title">Interfaces built for real interactions.</h2>
+          </div>
+          <p>Two live application projects that demonstrate my foundation in responsive front-end development, Firebase-backed experiences, and product thinking.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card project-featured reveal">
+            <a class="project-image" href="https://freshcart-ac57c.web.app/index" target="_blank" rel="noopener noreferrer" aria-label="Open Freshcart live project in a new tab">
+              <img src="assets/freshcart.png" alt="Freshcart grocery e-commerce website interface" width="1568" height="793" loading="lazy">
+              <span class="project-open">View live project <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+            </a>
+            <div class="project-body">
+              <div class="project-meta"><span>01 · E-commerce</span><span>Live project</span></div>
+              <h3>Freshcart</h3>
+              <p>A grocery shopping experience with a product-focused interface, shopping journey, checkout concept, and delivery information—built and hosted with Firebase.</p>
+              <div class="tag-list" aria-label="Freshcart technologies"><span>Angular</span><span>Bootstrap</span><span>JavaScript</span><span>Firebase</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <a class="project-image" href="https://project1-80a1c.web.app/landing" target="_blank" rel="noopener noreferrer" aria-label="Open Chatly live project in a new tab">
+              <img src="assets/chatly.png" alt="Chatly real-time messaging application landing page" width="1568" height="793" loading="lazy">
+              <span class="project-open">View live project <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></span>
+            </a>
+            <div class="project-body">
+              <div class="project-meta"><span>02 · Communication</span><span>Live project</span></div>
+              <h3>Chatly</h3>
+              <p>A real-time chat experience designed to keep friends, families, and colleagues connected using Ionic and Firebase Realtime Database.</p>
+              <div class="tag-list" aria-label="Chatly technologies"><span>Ionic</span><span>HTML5</span><span>CSS3</span><span>Firebase Realtime DB</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section stack-section" id="stack" aria-labelledby="stack-title">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label"><span>04</span> Technical toolkit</p>
+            <h2 id="stack-title">Skills organised by how they create value.</h2>
+          </div>
+          <p>No arbitrary percentage bars—just a clear view of the technologies and platform capabilities I use across enterprise integration and application development.</p>
+        </div>
+
+        <div class="stack-grid">
+          <article class="stack-card reveal">
+            <div class="stack-card-heading"><span class="stack-icon enterprise-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5Z"></path><path d="m4 7.5 8 4.5 8-4.5M12 12v9"></path></svg></span><div><small>Platform</small><h3>Enterprise Integration</h3></div></div>
+            <div class="skill-cloud"><span>IBM Sterling OMS</span><span>IBM Sterling B2Bi</span><span>Platform Installation</span><span>Environment Configuration</span><span>Order Lifecycle</span><span>Fulfilment Rules</span><span>Inventory Rules</span><span>System Integration</span></div>
+          </article>
+          <article class="stack-card reveal">
+            <div class="stack-card-heading"><span class="stack-icon exchange-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="m8.6 10.5 6.8-3M8.6 13.5l6.8 3"></path></svg></span><div><small>Exchange</small><h3>B2B & Operations</h3></div></div>
+            <div class="skill-cloud"><span>EDI</span><span>X12</span><span>EDIFACT</span><span>BPML</span><span>Trading Partners</span><span>Document Translation</span><span>Workflow Automation</span><span>Monitoring</span><span>Troubleshooting</span></div>
+          </article>
+          <article class="stack-card reveal">
+            <div class="stack-card-heading"><span class="stack-icon code-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"></path></svg></span><div><small>Experience</small><h3>Front-end Development</h3></div></div>
+            <div class="skill-cloud"><span>Angular</span><span>TypeScript</span><span>JavaScript</span><span>RxJS</span><span>HTML5</span><span>CSS3 / SCSS</span><span>Tailwind CSS</span><span>Bootstrap</span><span>Ionic</span></div>
+          </article>
+          <article class="stack-card reveal">
+            <div class="stack-card-heading"><span class="stack-icon platform-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path></svg></span><div><small>Application</small><h3>Supporting Technologies</h3></div></div>
+            <div class="skill-cloud"><span>Firebase</span><span>Realtime Database</span><span>Node.js</span><span>Git</span><span>GitHub</span><span>Responsive Design</span><span>Component Architecture</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="assistant-section content-section" aria-labelledby="assistant-section-title">
+      <div class="section-shell">
+        <div class="assistant-banner reveal">
+          <div class="assistant-orb" aria-hidden="true">
+            <span></span><i></i><b></b>
+            <svg viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-4 12.74V20l4-2 4 2v-4.26A7 7 0 0 0 12 3Z"></path><path d="M9 10h.01M15 10h.01M9.5 13.5c1.7 1.1 3.3 1.1 5 0"></path></svg>
+          </div>
+          <div class="assistant-banner-copy">
+            <p class="section-label"><span>AI</span> Interactive portfolio</p>
+            <h2 id="assistant-section-title">Have a question? Ask my portfolio.</h2>
+            <p>Explore my Sterling OMS, B2B Integrator, front-end, and project experience through a fast, privacy-friendly assistant built into this website.</p>
+            <div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg> Runs locally · No message data leaves your browser</div>
+          </div>
+          <div class="assistant-banner-actions">
+            <button class="button button-primary" type="button" data-open-assistant>Start a conversation <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+            <div class="suggested-question"><span>Try asking</span><button type="button" class="assistant-topic" data-question="How does Amutha connect OMS with other products?">“How do you connect OMS with other products?”</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section content-section" id="contact" aria-labelledby="contact-title">
+      <div class="section-shell">
+        <div class="contact-panel reveal">
+          <div class="contact-copy">
+            <p class="section-label"><span>05</span> Let’s connect</p>
+            <h2 id="contact-title">Looking for someone who understands both interfaces and integration?</h2>
+            <p>I’m interested in conversations about full stack development, IBM Sterling platform work, enterprise integration, and connected order experiences.</p>
+            <div class="contact-actions">
+              <a class="button button-primary" href="mailto:amuthak0409@gmail.com?subject=Portfolio%20enquiry%20for%20Amutha">Start a conversation <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+              <a class="button button-secondary" href="mailto:amuthak0409@gmail.com?subject=Resume%20request%20for%20Amutha">Request my résumé</a>
+            </div>
+          </div>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="detail-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span>
+              <div><small>Email</small><a href="mailto:amuthak0409@gmail.com">amuthak0409@gmail.com</a></div>
+              <button class="copy-button" type="button" data-copy-email aria-label="Copy email address" title="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path></svg></button>
+            </div>
+            <div class="contact-detail">
+              <span class="detail-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.36 6.8-1.62 6.8-7.2A5.6 5.6 0 0 0 19.3 3.4 5.2 5.2 0 0 0 19.1 0S17.9-.4 15 1.5a13.4 13.4 0 0 0-6 0C6.1-.4 4.9 0 4.9 0a5.2 5.2 0 0 0-.2 3.4A5.6 5.6 0 0 0 3.2 7.3c0 5.6 3.5 6.84 6.8 7.2A4.8 4.8 0 0 0 9 18v4"></path><path d="M9 19c-3 .9-3-1.5-4.2-2"></path></svg></span>
+              <div><small>GitHub</small><a href="https://github.com/Amutha-Karuvelamuthu" target="_blank" rel="noopener noreferrer">Amutha-Karuvelamuthu <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <div class="contact-detail">
+              <span class="detail-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span>
+              <div><small>Location</small><span>Tirunelveli, Tamil Nadu, India</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-shell footer-inner">
+      <a class="brand footer-brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark" aria-hidden="true">AK</span>
+        <span class="brand-copy"><strong>Amutha</strong><small>Build · Connect · Improve</small></span>
+      </a>
+      <p>Full Stack & Enterprise Integration Developer</p>
+      <div class="footer-links">
+        <a href="#expertise">Expertise</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/Amutha-Karuvelamuthu" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+      <p class="copyright">© <span id="current-year">2026</span> Amutha Karuvelamuthu.</p>
+    </div>
+  </footer>
+
+  <button class="assistant-launcher" type="button" data-open-assistant aria-label="Open portfolio assistant">
+    <span class="launcher-pulse" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 0 0-4 12.74V20l4-2 4 2v-4.26A7 7 0 0 0 12 3Z"></path><path d="M9 10h.01M15 10h.01M9.5 13.5c1.7 1.1 3.3 1.1 5 0"></path></svg>
+    <span class="launcher-label">Ask my portfolio</span>
+  </button>
+
+  <dialog class="assistant-dialog" id="portfolio-assistant" aria-labelledby="assistant-title">
+    <div class="assistant-shell">
+      <header class="assistant-header">
+        <div class="assistant-identity">
+          <span class="assistant-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-4 12.74V20l4-2 4 2v-4.26A7 7 0 0 0 12 3Z"></path><path d="M9 10h.01M15 10h.01M9.5 13.5c1.7 1.1 3.3 1.1 5 0"></path></svg></span>
+          <div><h2 id="assistant-title">Ask Amutha’s portfolio</h2><p><span></span> Local knowledge assistant</p></div>
+        </div>
+        <button class="assistant-close icon-button" type="button" aria-label="Close portfolio assistant">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+        </button>
+      </header>
+
+      <div class="assistant-privacy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg> Your questions stay in this browser. No external AI service is contacted.</div>
+
+      <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions">
+        <div class="message assistant-message">
+          <span class="message-avatar" aria-hidden="true">AK</span>
+          <div class="message-content"><p>Hi! I can answer questions about Amutha’s IBM Sterling OMS, B2B Integrator, front-end skills, and live projects. What would you like to know?</p></div>
+        </div>
+      </div>
+
+      <div class="quick-questions" aria-label="Suggested questions">
+        <button type="button" data-question="What can Amutha do with IBM Sterling OMS?">Sterling OMS</button>
+        <button type="button" data-question="Tell me about Amutha's B2B Integrator skills.">B2B Integrator</button>
+        <button type="button" data-question="How does Amutha integrate OMS with other products?">OMS integrations</button>
+        <button type="button" data-question="Show me Amutha's live projects.">Live projects</button>
+      </div>
+
+      <form class="assistant-form" id="assistant-form">
+        <label class="sr-only" for="assistant-input">Ask a question about Amutha’s portfolio</label>
+        <input id="assistant-input" name="question" type="text" autocomplete="off" maxlength="240" placeholder="Ask about skills, Sterling, or projects…" required>
+        <button type="submit" aria-label="Send question">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+        </button>
+      </form>
+      <p class="assistant-disclaimer">Answers are based only on the verified content in this portfolio.</p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Email copied to clipboard</div>
+  <script src="script.js" defer></script>
 </body>
 </html>

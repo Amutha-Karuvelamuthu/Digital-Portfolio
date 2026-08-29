@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amutha-karuvelamuthu.github.io/Digital-Portfolio/sitemap.xml
